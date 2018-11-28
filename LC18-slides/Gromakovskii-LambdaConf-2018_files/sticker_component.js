@@ -1,0 +1,2 @@
+define(["require","exports","tslib","react","spectrum_comments/comment_editor/core/editor_component"],function(e,t,r,n,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var c=(function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),t.prototype.render=function(){var e=this.props.sticker;return n.createElement("img",{className:"sc-comment-editor-sticker",src:e.url})},t})(o.EditorComponent);t.StickerComponent=c});
+//# sourceMappingURL=sticker_component.min.js-vflFZJvYl.map

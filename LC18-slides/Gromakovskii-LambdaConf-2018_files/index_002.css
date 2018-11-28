@@ -1,0 +1,261 @@
+/*! @generated */
+
+/* -- field_counter/index.web.css */
+.esignature-field-counter {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'AtlasGrotesk', sans-serif;
+  color: #fff;
+}
+
+.esignature-field-counter svg {
+  transform: scale(1.3);
+  margin: 0 16px;
+}
+
+.esignature-field-counter path {
+  fill: #fff;
+}
+
+.esignature-legal-agreement {
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.esignature-field-counter-complete {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.esignature-field-counter.esignature-field-counter-align-left {
+  -ms-flex-pack: left;
+      justify-content: left;
+}
+
+/* -- field_marker/index.web.css */
+.esignature-badge {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -ms-grid-column-align: center;
+        justify-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    position: absolute;
+    visibility: visible;
+    font-family: monospace;
+    font-size: 11px;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    text-align: center;
+
+    color: white;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    background-color: #007af5;
+}
+
+/* -- field_placer/index.web.css */
+.esignature-field-placer {
+    cursor: pointer;
+    position: absolute;
+    background-color: #e6e8eb;
+    visibility: visible;
+    border: solid 1px #6a7c8f;
+}
+
+.esignature-field-placer-body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    color: #1b2733;
+}
+
+.esignature-field-placer-handle {
+    height: 8px;
+    width: 8px;
+    border: 1px;
+    background-color: #6a7c8f;
+    border-radius: 100%;
+    position: absolute;
+}
+
+.esignature-field-placer-sender {
+    background-color: #ffe28f;
+    border: solid 1px #ffc726;
+}
+
+.esignature-field-placer-sender .esignature-field-placer-handle {
+    background-color: #ffc726;
+}
+
+.esignature-field-placer-icon {
+    float: left;
+    margin: 3px 8px 3px 3px;
+    height: 24px;
+    width: 24px;
+    path {
+        fill: #637282;
+    }
+}
+
+.esignature-field-placer-cancel {
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border-radius: 100%;
+    height: 16px;
+    width: 16px;
+    font-size: 12px;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: -30px;
+    background-color: #e6e8eb;
+    border: 1px solid #6a7c8f;
+}
+
+.esignature-field-placer-sender .esignature-field-placer-cancel {
+    background-color: #ffe28f;
+    border: solid 1px #ffc726;
+}
+
+.esignature-field-placer-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* -- field_selector/index.web.css */
+.esignature-field-selector {
+    width: 146px;
+    padding: 14px 0 6px 0;
+}
+
+.esignature-field-selector-header,
+.mc-popover-content-title.esignature-field-selector-header {
+    line-height: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #536170;
+    border: none;
+    padding: 2px 0 6px 16px;
+}
+
+.esignature-field-selector-button,
+.mc-popover-content-item.esignature-field-selector-button {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+
+    width: 100%;
+    padding: 0 8px 0 8px;
+    margin: 0;
+
+    border: none;
+    border-radius: 5px;
+    color: #1b2733;
+    outline: 0;
+
+    cursor: pointer;
+}
+
+.esignature-field-selector-option {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    font-size: 14px;
+    height: 32px;
+}
+
+.esignature-field-selector-option__selected {
+    color: #007af5;
+}
+
+.esignature-field-selector-option-color {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.esignature-selected-icon path {
+    fill: #007af5;
+}
+
+.esignature-field-selector-popover-trigger,
+.mc-popover-trigger.esignature-field-selector-popover-trigger {
+    width: 80px;
+    margin-left: 16px;
+}
+
+.esignature-field-selector-popover-button {
+    height: 50px;
+    color: #fff;
+}
+
+.esignature-field-selector-popover-content .mc-popover-content-menu {
+    min-width: 130px;
+}
+
+/* -- signature_creation_modal/index.web.css */
+.esignature-signature-creation-modal {
+  font-family: 'AtlasGrotesk', sans-serif;
+}
+
+.esignature-signature-creation-modal .signature-input {
+  width: 100%;
+  height: 170px;
+  outline: none;
+  text-align: center;
+  font-size: 36px;
+}
+
+.esignature-signature-creation-modal .signature-input::-webkit-input-placeholder {
+  opacity: 0.6;
+  font-family: 'AtlasGrotesk', sans-serif;
+}
+
+.esignature-signature-creation-modal .signature-input:-ms-input-placeholder {
+  opacity: 0.6;
+  font-family: 'AtlasGrotesk', sans-serif;
+}
+
+.esignature-signature-creation-modal .signature-input::placeholder {
+  opacity: 0.6;
+  font-family: 'AtlasGrotesk', sans-serif;
+}
+
+.esignature-signature-creation-modal .mc-util-modal-body {
+  padding: 0;
+}

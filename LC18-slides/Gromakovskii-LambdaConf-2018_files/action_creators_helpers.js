@@ -1,0 +1,2 @@
+define(["require","exports","tslib","modules/clean/comments/models/comment","modules/clean/comments/store"],function(e,t,n,i,a){"use strict";function o(e,t){if(e.stickerId||t){var n=t?a.default.state.activity.latest_revision:null,o=t?t.toMetadataDict():null;return new i.CommentMetadata({revision:n,annotation:o,sticker_id:e.stickerId})}return null}Object.defineProperty(t,"__esModule",{value:!0}),a=n.__importDefault(a),t.buildCommentMetadata=o});
+//# sourceMappingURL=action_creators_helpers.min.js-vflgNwbZS.map

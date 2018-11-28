@@ -1,0 +1,2 @@
+define(["require","exports","react"],function(e,r,t){"use strict";function a(e){var r=e.label,a=r&&r>99?"99+":r;return t.createElement("div",{className:"sc-comment-avatar-number"},a)}Object.defineProperty(r,"__esModule",{value:!0}),r.AvatarNumber=a});
+//# sourceMappingURL=avatar_number.min.js-vflWXzDzS.map

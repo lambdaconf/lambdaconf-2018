@@ -1,0 +1,105 @@
+/* @generated */
+/* From constants.css */
+
+
+/* From gemini-app.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.P3fMkgLJJ6 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+/**
+ * THE RULES BELOW ARE DUMMIES FOR TESTING
+ */
+
+[data-theme=web] .P3fMkgLJJ6 {
+    transform: translateZ(0);
+}
+
+/* From preview-image.css */
+._1RPjCqOSuB {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding: 40px 36px;
+    background-color: #F8F9FA;
+}
+
+._10XzzxD2-Q {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.LbSAq7r5DB, ._19VoPo7qJu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+._1qfmN8XukH {
+    position: relative;
+}
+
+/*
+ * When we're in zoom-fit/initial state
+ */
+
+._1RPjCqOSuB._2G_smAf1kF ._1qfmN8XukH {
+    width: 100%;
+    height: 100%;
+}
+
+._1RPjCqOSuB._2G_smAf1kF .LbSAq7r5DB, ._1RPjCqOSuB._2G_smAf1kF ._19VoPo7qJu {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* From preview-pdf.css */
+._3vFF3xH4Yd {
+    position: absolute;
+    color: transparent;
+    opacity: 0.4; /* to dim Ctrl+F search highlight */
+    margin: 0;
+    padding: 0;
+    transform-origin: bottom left;
+    white-space: pre;
+    line-height: 1;
+    cursor: text;
+}
+
+._3vFF3xH4Yd a {
+    color: transparent;
+}
+
+._1KgDGecM-D::selection {
+    /* Make sure the invisible text is hidden in IE */
+    background: rgb(255, 168, 0);
+}
+
+._15JT0CLHfC {
+    position: 'absolute';
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    transform-origin: 'top left';
+}
+
+._15JT0CLHfC a, ._15JT0CLHfC ._3LdRo_g_9w {
+    display: block;
+    cursor: pointer;
+}
+
+      

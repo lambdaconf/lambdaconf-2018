@@ -1,0 +1,2 @@
+define(["require","exports","react"],function(e,n,a){"use strict";function t(e,n){var t=e.countMsg,r=e.onClick,c=e.direction,l="UP"===c?"↑":"↓",i="unread-pill "+("UP"===c?"up":"down");return a.createElement("div",{className:i,onClick:r},a.createElement("div",{className:"unread-pill-text"},a.createElement("span",{className:"arrow-indicator"},l),a.createElement("span",{className:"unread-count"},t)))}Object.defineProperty(n,"__esModule",{value:!0}),n.UnreadPill=t});
+//# sourceMappingURL=unread_pill.min.js-vflovdM6L.map

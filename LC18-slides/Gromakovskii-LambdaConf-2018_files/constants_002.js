@@ -1,0 +1,2 @@
+define(["require","exports","modules/constants/comments_panel"],function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.FileActivityLogEventType=n.FILE_ACTIVITY_LOG_EVENT_TYPE,t.FileActivityLogClientOriginType=n.FILE_ACTIVITY_LOG_CLIENT_ORIGIN_TYPE;(function(e){e[e.MARKER=0]="MARKER",e[e.HIGHLIGHT=1]="HIGHLIGHT",e[e.REGION=2]="REGION"})(t.AnnotationTypes||(t.AnnotationTypes={})),t.AnnotationSubtypes={MARKER:{CIRCLE:0},REGION:{RECTANGLE:0},HIGHLIGHT:{HIGHLIGHT:0}}});
+//# sourceMappingURL=constants.min.js-vflHx-yBO.map

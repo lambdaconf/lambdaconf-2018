@@ -1,0 +1,2 @@
+define(["require","exports","tslib","react","spectrum_comments/comment_editor/comment_editor"],function(t,e,n,r,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var c=(function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return n.__extends(e,t),e.prototype.render=function(){var t=this.props,e=t.coachMarkAnchor,c=n.__rest(t,["coachMarkAnchor"]);return r.createElement(o.CommentEditor,n.__assign({},c,{annotation:e}))},e})(r.Component);e.CommentEditorWithAnchor=c});
+//# sourceMappingURL=comment_editor_with_anchor.min.js-vflwqzkzW.map

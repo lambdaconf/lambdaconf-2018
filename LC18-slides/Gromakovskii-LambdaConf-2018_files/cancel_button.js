@@ -1,0 +1,2 @@
+define(["require","exports","react","spectrum/button"],function(e,t,n,c){"use strict";function r(e){var t=e.label,r=e.disabled,a=e.signals.cancel;return n.createElement(c.Button,{className:"sc-comment-editor-controls-cancel",disabled:r,onClick:a,variant:"borderless"},t)}Object.defineProperty(t,"__esModule",{value:!0}),t.CancelButton=r});
+//# sourceMappingURL=cancel_button.min.js-vflTw1hMz.map

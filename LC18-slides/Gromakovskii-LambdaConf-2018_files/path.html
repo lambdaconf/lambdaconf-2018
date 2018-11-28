@@ -1,0 +1,254 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <!--[if (gte IE 9) ]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <title>Dropbox</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src https: 'unsafe-inline' 'unsafe-eval'; ">
+    <iframe id="utag_58" style="display:none" src="https://convert.ctypy.com/aff_l?offer_id=24153" width="1" height="1"></iframe><iframe id="utag_59" style="display:none" src="https://convert.ctypy.com/aff_goal?a=l&amp;goal_id=6636" width="1" height="1"></iframe><script type="text/javascript" async="" charset="utf-8" id="utag_dropbox.main_48" src="path_data/utag_002.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_dropbox.main_58" src="path_data/utag_004.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_dropbox.main_59" src="path_data/utag.js"></script></head>
+<body>
+<script src="path_data/utag_003.js" type="text/javascript" async=""></script><script async="" src="path_data/fbevents.js"></script><script type="text/javascript" async="" src="path_data/uwt.js"></script><script async="" src="path_data/gtm.js"></script><script>
+    (function(){
+        // Enable debugging via localStorage.
+        var debug_enabled = false;
+        if (window.localStorage && window.localStorage.getItem('marketing_tracker_debug')) {
+            debug_enabled = true;
+        }
+
+        /**
+         * Grab referrer from query params and attempt to set on document. If we have a correct
+         * referrer reference then setup the trackers, otherwise, we need to reload.
+         */
+        var ref_match = RegExp('[?&]referrer=([^&]*)').exec(window.location.search);
+        var fakeref = ref_match ? decodeURIComponent(ref_match[1]) : "";
+        try {
+            if ('Object' in window && 'defineProperty' in Object){
+                Object.defineProperty(document,'referrer',{'get':function(){ return fakeref;}});
+            } else {
+                window.document.__defineGetter__('referrer', function () { return fakeref;});
+            }
+        } catch(e){}
+
+        // If we couldn't override the referrer, then replace the location and reload.
+        if (document.referrer !== fakeref && document.referrer !== "") {
+            location.replace(location.href);
+        } else {
+            setupTrackers();
+        }
+
+        /**
+         * Listens for postMessages and sets up the trackers.
+         */
+        function setupTrackers () {
+            // GTM dataLayer and status.
+            window.dataLayer = [];
+            window.gtmAdded = false;
+
+            // Tealium event queue and interval.
+            window.tealiumQueue = [];
+            window.tealiumWaitingForGTM = false;
+            window.tealiumLoading = false;
+
+            // Debug log our build 'version'.
+            debug('Version', '2018-09-25 16:55:44.766213');
+
+            // Listen for messages from marketing_tracker.ts.
+            window.addEventListener('message', function(event){
+                debug('postMessage received', event);
+
+                var isTrustedOrigin = (
+                    event.origin.match(new RegExp('^https://www\.dropbox\.com$')) ||
+                    event.origin.match(new RegExp('^https://paper\.dropbox\.com$'))
+                );
+
+                if (isTrustedOrigin) {
+                    var dataLayer = event.data || {};
+                    var config = {};
+
+                    // If config was passed through, strip it from the dataLayer.
+                    if (dataLayer._config) {
+                        config = dataLayer._config;
+                        delete dataLayer._config;
+                    }
+
+                    // Debug log the dataLayer and config.
+                    debug('Config', config);
+                    debug('dataLayer', dataLayer);
+
+                    // Let each tag manager handle the event.
+                    handleGoogleTagManager(deepClone(dataLayer), config);
+                    handleTealium(deepClone(dataLayer), config);
+                } else {
+                    debug('Untrusted origin, no trackers activated');
+                }
+            });
+        }
+
+        /**
+         * Load Google Tag Manager and push data to it.
+         */
+        function handleGoogleTagManager (dataLayer, config) {
+            var gtm_disabled = config.gtm_disabled !== undefined ? config.gtm_disabled : false;
+            var gtm_id = config.gtm_id || 'GTM-K8WT2R';
+
+            // If GTM is disabled, bail out.
+            if (gtm_disabled) {
+                return;
+            }
+
+            // Push data to gtm and load if needed.
+            window.dataLayer.push(dataLayer);
+            debug('GTM - dataLayer.push()');
+            if (!window.gtmAdded) {
+                window.gtmAdded = true;
+                debug('GTM - loading script');
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer',gtm_id);
+            }
+        }
+
+        /**
+         * Load Tealium and push data to it. Since Tealium doesn't queue data the same way that
+         * GTM does, we need to setup our own queue and process it after Tealium's API
+         * has finished loading.
+         *
+         * During migration from GTM to Tealium, we are relying on a global variable set by
+         * a custom GTM tag to inform Tealium which tags are ready to be enabled (so that
+         * we don't double fire any tags, which would throw off revenue metrics). In order
+         * for this to work, we MUST load Tealium after GTM has fully loaded and the custom
+         * global variable has been set on the page.
+         */
+        function handleTealium (dataLayer, config) {
+            var gtm_disabled = config.gtm_disabled !== undefined ? config.gtm_disabled : false;
+            var tealium_enabled = config.tealium_enabled !== undefined ? config.tealium_enabled : false;
+
+            // If Tealium is not enabled, bail out.
+            if (!tealium_enabled) {
+                return;
+            }
+
+            // If we're already waiting for GTM, just queue the event.
+            if (window.tealiumWaitingForGTM) {
+                debug('Tealium - adding data to queue');
+                window.tealiumQueue.push(dataLayer);
+                return;
+            }
+
+            // If GTM is disabled or it has fully loaded just process the event.
+            if (gtm_disabled || !!window.gtm_tlm) {
+                processTealiumEvent(dataLayer, config);
+                return;
+            }
+
+            // Wait for GTM to be loaded, then process the event (and the queue).
+            window.tealiumWaitingForGTM = true;
+            debug('Tealium - waiting for window.gtm_ltm');
+            onPropertySet(window, 'gtm_tlm', function (retry) {
+                debug('Tealium - found window.gtm_ltm', window.gtm_tlm);
+                window.tealiumWaitingForGTM = false;
+                processTealiumEvent(dataLayer, config);
+            })
+        }
+
+        /**
+         * Process Tealium event according to the current loading state:
+         *
+         *   - If not yet loaded, set dataLayer and load the Tealium script .
+         *   - If still loading, queue the event.
+         *   - If done loading, trigger the event with utag.link().
+         */
+        function processTealiumEvent (dataLayer, config) {
+            var tealium_profile = config.tealium_profile || 'main';
+            var tealium_env = config.tealium_env || 'prod';
+
+            // If Tealium has already loaded, fire off a utag.link() event instead of setting up
+            // the initial pageview data.
+            if (window.utag) {
+                debug('Tealium - utag.link()');
+                window.utag.link(dataLayer);
+                return;
+            }
+
+            // If we're already in the process of loading Tealium, add this event to the queue.
+            if (window.tealiumLoading) {
+                debug('Tealium - adding data to queue');
+                window.tealiumQueue.push(dataLayer);
+                return;
+            }
+
+            // Setup the Tealium data layer and start loading it.
+            debug('Tealium - setting utag_data and loading script');
+            window.tealiumLoading = true;
+            window.utag_data = dataLayer;
+            (function(a,b,c,d){
+                a='//tags.tiqcdn.com/utag/dropbox/'+ tealium_profile + '/' + tealium_env + '/utag.js';
+                b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+                a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+            })();
+
+            // Wait until Tealium is loaded, then drain the queue.
+            debug('Tealium - waiting for window.utag');
+            onPropertySet(window, 'utag', function () {
+                debug('Tealium - found window.utag');
+                window.tealiumLoading = false;
+                window.tealiumQueue.forEach(function (item) {
+                    debug('Tealium - utag.link() for queued item', item);
+                    window.utag.link(item);
+                });
+                window.tealiumQueue = [];
+            });
+        }
+
+        /**
+         * Helper to wait until an object property is set for the first time.
+         */
+        function onPropertySet(obj, prop, cb) {
+            Object.defineProperty(obj, prop, {
+                configurable: true,
+                enumerable: true,
+                writeable: true,
+                get: function () {
+                    return undefined;
+                },
+                set: function (val) {
+                    Object.defineProperty(obj, prop, {
+                        value: val,
+                        enumerable: true,
+                        writeable: true
+                    });
+                    cb();
+                }
+            });
+        }
+
+        /**
+         * Helper to do 'debug' logging (only visible if you are showing 'verbose' console logs).
+         */
+        function debug (msg, data) {
+            if (console.debug && debug_enabled) {
+                if (data) {
+                    console.debug('Marketing Tracker: ' + msg, data);
+                } else {
+                    console.debug('Marketing Tracker: ' + msg);
+                }
+            }
+        }
+
+        /**
+         * Helper to deep clone a simple object (for dataLayer).
+         */
+        function deepClone (obj) {
+            return JSON.parse(JSON.stringify(obj));
+        }
+    })();
+</script>
+
+
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","442728829472826");fbq("set","agent","tmgoogletagmanager","442728829472826");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=442728829472826&amp;ev=PageView&amp;noscript=1"></noscript>
+<script type="text/javascript" id="">window.gtm_tlm={Google_Analytics:!0,Marketo:!0,LinkedIn_Insight_Tag:!0,Sizmek_VersaTag:!0,Bing_Ads_Universal_Event_Tracking:!0,DBX_Pro_Conversion:!0,Conversion_Linker_Tag:!0,MCC_DfB_Visited_Try_or_Buy:!0,MCC_DfB_Trial:!0,MCC_DfB_Purchase:!0,PK4_Display_Professional_Trial_Sign_Up:!0,PK4_Display_Professional_Product_Purchase:!0,PK4_Team:!0,Acquisition_All_Pages:!0,Elite_Social_DfB_Trial_Starts:!0};</script><script type="text/javascript" id="">var versaTag={id:"9603",sync:0,dispType:"iframe",ptcl:"HTTPS",bsUrl:"bs.serving-sys.com/BurstingPipe"};</script>
+<script type="text/javascript" id="ebOneTagUrlId" src="path_data/ebOneTag.js"></script><script src="path_data/adsct" type="text/javascript"></script></body></html>
